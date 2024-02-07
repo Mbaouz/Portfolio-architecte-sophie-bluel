@@ -7,8 +7,12 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+	integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="front.js"></script>
 </head>
 <body>
 <header>
@@ -17,7 +21,7 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<a href="login.html"><li>logout</li></a>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -36,6 +40,73 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
+		<button class="Bt-Modif">
+		
+		   <i class="fa-regular fa-pen-to-square"></i>
+		   <p>Modifier</p>
+		
+		</button>
+		<aside  class="modal" style="display:none">
+			<h4>Galerie photo</h4>
+			
+           <div class="modal-wrapper" >
+			    <i class="fa-solid fa-xmark" style="color:black"></i>
+			 <div>
+			     <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
+			 </div>
+		     <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
+			 </div>
+			 <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
+			 </div>
+			 <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
+			 </div>
+             <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
+			 </div>
+			 <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
+			 </div>
+			 <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
+			 </div>
+			 <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
+			 </div>
+			 <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			    <img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
+			 </div>
+			 <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
+			 </div>
+			 <div>
+				 <i class="fa-solid fa-trash-can" style="color:white"></i>
+			     <img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
+			 </div>
+			  <div class="line"></div>
+			  <div class="bt-ajout">
+			     <button>Ajouter une photo</button>
+			  </div>
+			  
+
+		   </div>
+		   
+
+
+		</aside>
+		
 		<div class="gallery">
 			<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
