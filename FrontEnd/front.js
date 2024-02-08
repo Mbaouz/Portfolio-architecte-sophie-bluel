@@ -1,8 +1,12 @@
 const openModal = document.querySelector(".Bt-Modif");
-const modal= document.querySelector(".modal");
-openModal.addEventListener("click" , function () {
+
+openModal.addEventListener("click" , function (e) {
     console.log("ok!!!!");
-    
-    modal.classList.innerHTML("display:");
+    e.preventDefault();
+    const modal = document.querySelectorAll(".modal");
+    modal.classList.remove("modal-wrapper");
 
 });
+
+// login
+

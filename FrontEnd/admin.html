@@ -12,7 +12,7 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="front.js"></script>
+	
 </head>
 <body>
 <header>
@@ -39,16 +39,17 @@
 		</article>
 	</section>
 	<section id="portfolio">
+		
 		<h2>Mes Projets</h2>
 		<button class="Bt-Modif">
 		
 		   <i class="fa-regular fa-pen-to-square"></i>
 		   <p>Modifier</p>
-		
+		   
 		</button>
 		<aside  class="modal" style="display:none">
 			<h4>Galerie photo</h4>
-			
+			<script src="front.js"></script>
            <div class="modal-wrapper" >
 			    <i class="fa-solid fa-xmark" style="color:black"></i>
 			 <div>
@@ -103,8 +104,32 @@
 
 		   </div>
 		   
+		</aside>
+		<aside class="modal" style="display: none">
+			<h4>Ajout photo</h4>
+         <div class="modal-ajout">
+			 <div class="section-img">
+			     <i class="fa-regular fa-image"></i>
+                 <button>+ Ajouter photo</button>
+			      <p>jpg.png : 4mo max</p>
+			 </div>
+              <div class="choix-img">
+			  <article class="Titre">
+				   <h3>Titre</h3>
+				   <input type="text" id="text" name="text">
+			 </article>
+			 <article class="categorie">
+				   <h3>Catégorie</h3>
+				   <input type="text" id="cat" name="cat">
+			 </article>
+			 <div class="line2"></div>
+				<button class="valider">Valider</button>
+              </div>
+			  <i class="fa-solid fa-xmark" style="color:black"></i>
+			  <i class="fa-solid fa-arrow-left"></i>
+		 </div>
 
-
+		 
 		</aside>
 		
 		<div class="gallery">
