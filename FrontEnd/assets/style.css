@@ -134,10 +134,12 @@ nav a {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	
 }
 
 .gallery img {
 	width: 100%;
+	
 
 }
 #contact {
@@ -240,12 +242,12 @@ footer nav ul {
 	color: white;
 	background-color: #1D6154;
 }
-.bt-filtre1 {
+#Bt-tout {
     
 	width: 100px;
 	
 }
-.bt-filtre2{
+ #Objets{
 	width: 100px;
 	
 }
