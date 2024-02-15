@@ -1,3 +1,5 @@
+
+
 export async function getWorks() {
     const request = await fetch("http://localhost:5678/api/works")
     const data = await request.json()
@@ -11,4 +13,15 @@ export async function getCategories() {
 
     return data
 }
+
+
+
+
+
+
+import { login } from "./login.js"
+
+login()
+
+
 

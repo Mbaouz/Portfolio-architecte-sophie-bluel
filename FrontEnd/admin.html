@@ -105,7 +105,7 @@
 		   </div>
 		   
 		</aside>
-		<aside class="modal" style="display: none">
+		<aside class="modal" style="display: ">
 			<h4>Ajout photo</h4>
          <div class="modal-ajout">
 			 <div class="section-img">
@@ -120,7 +120,12 @@
 			 </article>
 			 <article class="categorie">
 				   <h3>Catégorie</h3>
-				   <input type="text" id="cat" name="cat">
+				   <select>
+					<option value="">--Choisir catégorie--</option>
+					<option value="Objets">Objets</option>
+					<option value="Appartements">Appartements</option>
+					<option value="Hotel-rest">Hôtel & restaurants</option>
+				   </select>
 			 </article>
 			 <div class="line2"></div>
 				<button class="valider">Valider</button>

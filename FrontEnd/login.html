@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+	
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -27,27 +28,26 @@
 </header>
 <main>
   <div class="login">
-      <h2>Log In</h2>
-  
-  
-      <article class="email">
-		
-           <h3>E-mail</h3>
-           <input type="email" id="e-mail" name="e-mail">
-     </article>
-     <article class="password">
-           <h3>Mot de passe</h3>
-           <input type="password" id="password" name="password">
-   </article>
-   <button type="submit">Se connecter</button>
-	
-   <a href="">
-   <p>Mot de passe oublié</p>
-   </a>
-
+           <h2>Log In</h2>
+		   <form id="login-form" action="http://localhost:5678/api/users/login" method="post">
+              <div>
+                   <h3>E-mail</h3>
+                   <input type="email" id="email" name="e-mail">
+		      </div>
+		      <div>
+                  <h3>Mot de passe</h3>
+                  <input type="password" id="password" name="password">
+		      </div>
+                   <button id="submit">Se connecter</button>
+		   
+           <a href="">
+                <p>Mot de passe oublié</p>
+          </a>
+		</form>
   </div>
 
-
+  <script src="api.js" type="module"></script>
+  <script src="login.js" type="module"></script>
 </main>
 
 
