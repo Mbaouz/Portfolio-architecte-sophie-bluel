@@ -1,30 +1,23 @@
 
 
+import { login } from "./api.js";
 
-export function login(){
-    
-    const formLog = document.getElementById('login-form');
-    formLog.addEventListener("submit",function(event){
-        
-        event.preventDefault();
-        const UserPassword = {
-            email: event.target.querySelector("[name=e-mail]").value,
-            password : event.target.querySelector("[name=password]").value, 
-          
+const formLog = document.getElementById('login-form');
+formLog.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const UserPassword = {
+        email: event.target.querySelector("[name=e-mail]").value,
+        password: event.target.querySelector("[name=password]").value,
+    };
 
-        }
-        
-        const chargeUtile = JSON.stringify(UserPassword);
-        fetch ("http://localhost:5678/api/users/login",{
-            method : "POST",
-            headers :{"content-type" : "application/json "} ,
-            body : chargeUtile
-            
 
-        });
-        
-       
-    });
-    
-}
+    const result = await login(UserPassword)
+
+    if (result.token) {
+        localStorage.setItem('token', result.token)
+        // Faire redirection ici
+    };
+    // ici faire un message d'erreur, car la combinaison login mot de passe n'est pas bonne (a faire dans un else)
+    console.log(result)
+});
 
