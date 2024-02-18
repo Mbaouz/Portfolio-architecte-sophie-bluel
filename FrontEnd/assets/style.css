@@ -205,7 +205,7 @@ footer nav ul {
 }
 .Bt-Modif p{
 	font-size: 14px;
-	font-family: Work Sans ;
+	font-family: 'Work Sans' ;
 	font-weight: 400;
 
 }
@@ -335,22 +335,29 @@ a {
 	
 }
 
-.modal-wrapper {
-	
+
+
+#modalWrapper {
+
+
 	display: grid;
 	grid-template-columns: 90px 90px 90px 90px 90px;
 	padding: 60px;
 	padding-top: 90px;
 	max-width: 630px;
-    max-height: 688px;
+    height: 100%;
 	background-color: white;
     border-radius: 10px;
     grid-template-rows: 130px 130px 130px;
 	overflow: auto;
 
+
+
+
+
 }
 
-.modal-wrapper img{
+#modalWrapper img{
 	width: 76.61px;
     height: 102.57px;
 	
@@ -381,7 +388,7 @@ a {
 	display: flex;
 	justify-content: center;
 	position: absolute;
-	font-family: Work Sans;
+	font-family: 'Work Sans';
     font-size: 26px;
     font-weight: 400;
 
@@ -395,7 +402,7 @@ a {
 	height: 35px;
 	border-radius: 60px;
 	border-color: transparent;
-	font-family: Syne;
+	font-family: 'Syne';
 	font-size: 16px;
 	color:white;
 	font-weight: 700;
@@ -406,17 +413,27 @@ a {
 	padding-left: 10px;
 	padding-right: 10px;
 	width: 237px;
-	position: absolute;
+    position:absolute;
 	bottom: 7em;
 	left: 40em;
 }
+/*.bottomModal {
 
-.line {
+display: flex;
+align-items: center;
+justify-content: center;
+align-content: center;
+flex-direction: column;
+
+
+}*/
+ .line {
 	border-bottom: 1px solid  #B3B3B3 ;
 	width: 420px;
-	position: relative;
-	right: 90px;
-	top: 70px;
+	position: absolute;
+	bottom: 12em;
+	
+	
 }
 
 /*modal ajout photo*/

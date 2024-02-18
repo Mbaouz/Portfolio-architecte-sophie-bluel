@@ -1,6 +1,6 @@
 
 
-import { login } from "./api.js";
+import {login} from "./api.js"
 
 const formLog = document.getElementById('login-form');
 formLog.addEventListener("submit", async function (event) {
@@ -10,14 +10,15 @@ formLog.addEventListener("submit", async function (event) {
         password: event.target.querySelector("[name=password]").value,
     };
 
+    
+    const result =  login(UserPassword)
+    
 
-    const result = await login(UserPassword)
-
-    if (result.token) {
-        localStorage.setItem('token', result.token)
+    if (result.token )
+        window.localStorage.setItem('token', result.token)
         // Faire redirection ici
-    };
+    
     // ici faire un message d'erreur, car la combinaison login mot de passe n'est pas bonne (a faire dans un else)
-    console.log(result)
+    console.log(result);
 });
 
