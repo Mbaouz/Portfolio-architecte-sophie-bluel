@@ -42,31 +42,28 @@
 	<section id="portfolio">
 		
 		<h2>Mes Projets</h2>
-		<button class="Bt-Modif">
+		<button id="Bt-Modif">
 		
 		   <i class="fa-regular fa-pen-to-square"></i>
 		   <p>Modifier</p>
 		   
 		</button>
-		<aside  class="modal" style="display:">
-			<h4>Galerie photo</h4>
-			<i class="fa-solid fa-xmark" style="color:black"></i>
+		<aside  class="modal" id="modal" style="display:none">
+			<div id="clickOver"></div>
 			
-			     <div id="modalWrapper"></div>
-			          
+		
+			     <div  id="modalWrapper"></div>
+				 <h4>Galerie photo</h4>
+				 <i class="fa-solid fa-xmark" id="xmark" style="color:black"></i>   
+
 				 <div class="line"></div>
 				    <div class="bt-ajout">
 					   <button>Ajouter une photo</button>
 	  
 				  </div>    
-				      
-				 
-				
-		 
-		  
-		   
 		</aside>
-		<aside class="modal" style="display:none ">
+		
+		<aside class="modal" id="modal2" style="display:none ">
 			<h4>Ajout photo</h4>
          <div class="modal-ajout">
 			 <div class="section-img">
@@ -101,6 +98,7 @@
 		<div class="gallery" id="gallery">
 			
 		</div>
+
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>

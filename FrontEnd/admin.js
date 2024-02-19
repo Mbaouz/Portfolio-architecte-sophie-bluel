@@ -29,3 +29,31 @@ works.forEach(element => {
 
 });
 
+//boutton modifier//
+
+const btModif = document.getElementById('Bt-Modif') 
+btModif.addEventListener("click" , function(){
+
+document.getElementById("modal").removeAttribute("style");
+
+
+});
+
+
+
+
+const xmark = document.getElementById('xmark')
+xmark.addEventListener("click", function(){
+
+  document.getElementById("modal").setAttribute("style" , "display:none")
+
+});
+
+const xmodal = document.getElementById('clickOver')
+xmodal.addEventListener("click",function(){
+
+document.getElementById("modal").setAttribute("style","display:none")
+
+
+});
+
