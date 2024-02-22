@@ -319,7 +319,7 @@ a {
 
 /*Modal*/
 
-.modal {
+.modalWrapper {
 	
 	position: fixed;
 	top:0;
@@ -338,7 +338,7 @@ a {
 
 
 
-#modalWrapper {
+#modal {
 
     position: absolute;
 	display: grid;
@@ -372,7 +372,7 @@ a {
 
 }
 
-#modalWrapper img{
+#modal img{
 	width: 76.61px;
     height: 102.57px;
 	
@@ -394,10 +394,11 @@ a {
 	font-size: 20px;
     right: 26em;
 	top: 20px;
+	cursor: pointer;
 	
 }
 
-.modal h4 {
+.modalWrapper h4 {
 	margin-bottom: 90px;
 	margin-top: 50px;
 	display: flex;
@@ -411,7 +412,7 @@ a {
 
 }
 
-.bt-ajout button {
+#btAjout button {
 
 	background-color: #1D6154;
 	height: 35px;
@@ -461,6 +462,8 @@ flex-direction: column;
 	background-color: white;
     border-radius: 10px;
 	overflow: auto;
+	position: absolute;
+	height: 100%;
 }
 .section-img {
 
@@ -573,7 +576,34 @@ flex-direction: column;
 	position: absolute;
 	top:20px;
 	font-size: 25px;
-	left:21em
+	left:2em;
+	cursor: pointer;
+
+
+}
+
+#xmark2 {
+
+	background-color: transparent;
+	position: absolute;
+	font-size: 20px;
+    right: 2em;
+	top: 20px;
+	cursor: pointer;
+
+}
+
+#clickOver2{
+
+
+	
+	top:0;
+    left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background:transparent;
+	
 
 
 }
