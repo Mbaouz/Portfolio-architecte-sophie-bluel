@@ -31,13 +31,13 @@ export async function login(chargeUtile) {
 }
 
 export async function deleteWork(id) {
-    const request = await fetch("http://localhost:5678/api/works/delete/" + id, {
+    const request = await fetch("http://localhost:5678/api/works/" + id, {
         method: "DELETE",
         headers: {
-            "content-type": "application/json",
+          
             "Authorization": "Bearer " + localStorage.getItem('token')
         },
-        body: JSON.stringify(chargeUtile)
+        
     });
 
     const data = await request.json()
@@ -46,4 +46,24 @@ export async function deleteWork(id) {
 }
 
 
+export async function addWork(formData) {
+    const request = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        body: formData,
+
+        headers: {
+          
+            "Authorization": "Bearer " + localStorage.getItem('token')
+        }
+
+
+    });
+
+
+    
+
+    const data = await request.json()
+
+    return data
+};
 

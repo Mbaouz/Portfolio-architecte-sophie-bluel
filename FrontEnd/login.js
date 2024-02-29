@@ -11,7 +11,7 @@ formLog.addEventListener("submit", async function (event) {
     };
 
     
-    const result =  login(UserPassword)
+    const result =  await login(UserPassword)
     
 
     if (result.token ){

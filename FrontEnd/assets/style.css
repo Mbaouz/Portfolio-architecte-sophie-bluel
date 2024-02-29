@@ -384,7 +384,8 @@ a {
 	font-size: 10px;
 	padding: 5px;
 	top: 25px;
-	left:53px
+	left:53px;
+	color : white;
 	
 }
 .fa-xmark {
@@ -433,16 +434,7 @@ a {
 	bottom: 7em;
 	left: 40em;
 }
-/*.bottomModal {
 
-display: flex;
-align-items: center;
-justify-content: center;
-align-content: center;
-flex-direction: column;
-
-
-}*/
  .line {
 	border-bottom: 1px solid  #B3B3B3 ;
 	width: 420px;
@@ -482,13 +474,22 @@ flex-direction: column;
 
 }
 
-.fa-image {
+.AperImg {
 
-	font-size: 76px;
-	color:#CBD6DC ;
+	width: 129px;
+    height: 193px;
+    position: absolute;
+
 	
 }
-.valider {
+
+.fa-image {
+
+font-size: 76px;
+color: #cbd6dc
+
+}
+#valider {
 
 	
 	width: 237px;
@@ -503,17 +504,19 @@ flex-direction: column;
     border:none;
 	
 }
-.section-img button {
-
+.section-img label {
+    display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 173px;
 	height: 36px;
-	top: 881px;
-	left: 633px;
 	border-radius: 50px;
 	background-color:#CBD6DC ;
 	border: none;
     font-family: Work Sans;
 	color: #306685 ;
+	cursor: pointer;
+	
 }
 .section-img p {
 
@@ -604,6 +607,19 @@ flex-direction: column;
 	height: 100%;
 	background:transparent;
 	
+
+
+}
+
+/*#displayImg {
+
+width: 172px;
+height: 80px;
+position:absolute;
+background-position: center;
+background-size: cover;
+top: 90px;
+background-color: #1D6154;
 
 
 }
