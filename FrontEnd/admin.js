@@ -1,33 +1,45 @@
 import { getWorks , deleteWork , addWork } from "./api.js";
 
 const gallery = document.getElementById('gallery');
+const modal = document.getElementById('modal')
 const works = await getWorks();
-    
+
+async function updateGallery() {
+
+  gallery.innerHTML = ''
+  modal.innerHTML = ''
+  const works = await getWorks();
+
   works.forEach(element => {
 
-        gallery.innerHTML += `
-        <figure> 
-        <img src="${element.imageUrl}" alt="${element.title}">
-        <figcaption>${element.title}</figcaption>
-        </figure>
-        `
-    
-});
-
-const modal = document.getElementById('modal')
-
-works.forEach(element => {
+    gallery.innerHTML += `
+    <figure> 
+      <img src="${element.imageUrl}" alt="${element.title}">
+      <figcaption>${element.title}</figcaption>
+    </figure>
+  `
 
     modal.innerHTML += `
     <div>
-    <i class="fa-solid fa-trash-can" id="trash" data-id="${element.id}" ></i>
-    <img src="${element.imageUrl}" alt="${element.title} data-id="${element.id}">
+      <i class="fa-solid fa-trash-can trash" data-id="${element.id}" ></i>
+      <img src="${element.imageUrl}" alt="${element.title} data-id="${element.id}">
     </div>
-    
-    
-    `
+  `
 
-});
+    //suprimer photo//
+      document.querySelectorAll(".trash").forEach(element => {
+
+      element.addEventListener("click", async (event) => {
+
+        await deleteWork(event.target.dataset.id);
+        // Regenerer l'affichage des projets sur la page admin et sur sa modal
+        await updateGallery()
+      });
+    });
+  });
+}
+
+await updateGallery()
 
 //boutton modifier//
 
@@ -100,52 +112,23 @@ arrow.addEventListener("click",function(){
 
 });
 
-//suprimer photo//
-
- document.querySelectorAll("#trash").forEach(element => { 
-  
-  element.addEventListener("click" , (event)=> {
-
-    deleteWork(event.target.dataset.id);
-    
-    
-
-    // Regenerer l'affichage des projets sur la page admin et sur sa modal
- 
-  });
-
-
-});
-
-
-
-
-
-// Pour le formulaire d'ajout, faire un new FormData avec les valeurs du formulaire
-// https://developer.mozilla.org/fr/docs/Web/API/FormData/FormData
 
 
 // Apercu image //
+
+
 const inputImg = document.getElementById('input-file');
-var uploadImg = "";
-
-inputImg.addEventListener("change",function(){
-
-const reader = new FileReader();
-reader.addEventListener("load" , () => {
-
- uploadImg = reader.result;
-
- 
-
-  document.getElementById('displayImg').style.backgroundImage=`url (${uploadImg})`;
-} );
-
-reader.readAsDataURL(this.files[0]);
-
-} );
 
 
+inputImg.addEventListener("change", function (event) {
+  let imageUrl = URL.createObjectURL(event.target.files[0])
+  console.log(imageUrl)
+  let preview = document.getElementById('preview');
+  preview.classList.remove('hidden')
+  preview.querySelector('img').src = imageUrl;
+
+  
+});
 
 
 
@@ -155,31 +138,50 @@ reader.readAsDataURL(this.files[0]);
 
 
 const myForm = document.querySelector('form')
-myForm.addEventListener("submit",async function(e){
-e.preventDefault();
-const formData = new FormData(myForm) ;
+let file = document.getElementById("input-file")
 
+let title = document.getElementById("title");
 
-    const imgUrl = document.getElementById("input-file").getAttribute('src');
-    const title = document.getElementById("title").value;
-    const category = document.getElementById("category");
-    const categoryValue = category.options[category.selectedIndex].value;
+let category = document.getElementById("category")
+myForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-    formData.append('image', imgUrl);
-    formData.append('title', title);
-    formData.append('category', categoryValue);
+  if (checkForm()) {
+    const formData = new FormData(myForm);
+    await addWork(formData);
 
-const result = await addWork(formData);
-console.log(result)
+    await updateGallery()
 
+    file.value = ''
+    title.value = ''
+    category.value = ''
+
+    let preview = document.getElementById('preview');
+    preview.classList.add('hidden')
+    
+  }
 });
 
-category.addEventListener("change",function(){
+function checkForm() {
+  console.log(file.value);
+  console.log(title.value);
+  console.log(category.value);
+  if (file.value != '' && title.value != '' && category.value != '') {
+    console.log("ok")
+    
 
-  const category = document.getElementById("category");
-  const categoryValue = category.options[category.selectedIndex].value;
-  
+    document.getElementById('valider').style.backgroundColor= `  #1D6154 `
+    // Passer le bouton en vert ici
+    return true;
 
-  console.log(category.options[this.selectedIndex].label);
+    
+  }
 
-})
+  document.getElementById('valider').style.backgroundColor= ` #CBD6DC `
+
+  return false
+}
+
+file.addEventListener("change", checkForm)
+title.addEventListener("change", checkForm)
+category.addEventListener("change", checkForm)

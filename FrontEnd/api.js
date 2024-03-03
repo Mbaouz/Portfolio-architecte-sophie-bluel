@@ -40,9 +40,7 @@ export async function deleteWork(id) {
         
     });
 
-    const data = await request.json()
-
-    return data
+    
 }
 
 

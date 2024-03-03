@@ -464,14 +464,33 @@ a {
 	flex-direction: column;
 	background-color:#E8F1F6 ;
     width: 420px;
-    height: 169px;
-    top: 786px;
-    left: 510px;
+    height: 155px;
     border-radius: 3px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	gap: 20px;
 
+}
+
+
+#preview {
+	background-color: #E8F1F6;
+	inset: 0;
+	position: absolute;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 169px;
+	width: 420px;
+	top:104px;
+	left:65px
+}
+
+#preview img {
+	width: 129px;
+	height: 193px;
+	
 }
 
 .AperImg {
@@ -502,6 +521,7 @@ color: #cbd6dc
 	top: 50px;
 	color: white;
     border:none;
+	cursor: pointer;
 	
 }
 .section-img label {
@@ -611,15 +631,8 @@ color: #cbd6dc
 
 }
 
-/*#displayImg {
-
-width: 172px;
-height: 80px;
-position:absolute;
-background-position: center;
-background-size: cover;
-top: 90px;
-background-color: #1D6154;
 
 
+.hidden {
+	display: none !important;
 }
