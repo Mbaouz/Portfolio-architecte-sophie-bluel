@@ -51,6 +51,12 @@ document.getElementById("modalWrapper").removeAttribute("style");
 
 });
 
+const iconM = document.getElementById('icon-modif')
+iconM.addEventListener("click" , function(){
+
+  document.getElementById("modalWrapper").removeAttribute("style");
+});
+
 
 
 //bouton fermer modal//
@@ -145,27 +151,31 @@ let title = document.getElementById("title");
 let category = document.getElementById("category")
 myForm.addEventListener("submit", async function (e) {
   e.preventDefault();
-
+  
   if (checkForm()) {
     const formData = new FormData(myForm);
     await addWork(formData);
-
+    
     await updateGallery()
 
     file.value = ''
     title.value = ''
     category.value = ''
+    document.getElementById('valider').style.backgroundColor= ` #CBD6DC `
 
     let preview = document.getElementById('preview');
     preview.classList.add('hidden')
     
-  }
+  };
+
+  
 });
 
 function checkForm() {
   console.log(file.value);
   console.log(title.value);
   console.log(category.value);
+  
   if (file.value != '' && title.value != '' && category.value != '') {
     console.log("ok")
     
@@ -176,11 +186,14 @@ function checkForm() {
 
     
   }
-
+  
   document.getElementById('valider').style.backgroundColor= ` #CBD6DC `
-
+  
   return false
 }
+
+
+
 
 file.addEventListener("change", checkForm)
 title.addEventListener("change", checkForm)

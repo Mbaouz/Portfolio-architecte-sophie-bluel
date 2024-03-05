@@ -20,15 +20,15 @@
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
-			<a href="accueil.html"><li>projets</li></a>
+			<li> <a href="accueil.html"> projets</a></li>
 			<li>contact</li>
-			<a href="login.html"><li>logout</li></a>
+			<li> <a href="accueil.html"> logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </header>
 <main>
-	<section id="introduction">
+	<div class="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
 		</figure>
@@ -38,16 +38,15 @@
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
-	</section>
+	</div>
 	<section id="portfolio">
 		
 		<h2>Mes Projets</h2>
-		<button id="Bt-Modif">
 		
-		   <i class="fa-regular fa-pen-to-square"></i>
-		   <p>Modifier</p>
-		   
-		</button>
+		<div class="Bt-Modif">
+		   <i class="fa-regular fa-pen-to-square" id="icon-modif"></i>
+		<button id="Bt-Modif">Modifier</button>
+		</div>
 		<aside  class="modalWrapper" id="modalWrapper" style="display:none">
 			<div id="clickOver"></div>
 			
@@ -68,42 +67,45 @@
 			
 			<h4>Ajout photo</h4>
          <div class="modal-ajout">
-			<form method="post">
-			 <div class="section-img" >
+		  <form method="post">
+			 <div class="section-img">
 
-				<div class="hidden" id="preview">
-					<img src="" alt="">
-				</div>
+				    <div class="hidden" id="preview">
+					     <img src="assets/images/icon-img.png" alt="">
+				    </div>
 			    
-		         <i class="fa-regular fa-image " id="iconImg"></i>
+		          <i class="fa-regular fa-image " id="iconImg"></i>
 				 
-                    <label id="btAjout2" for="input-file" type="submit">+ Ajouter photo</label>
+                    <label id="btAjout2" for="input-file" >+ Ajouter photo</label>
 				    <input type="file" name="image" accept=" image/png , image/jpg" id="input-file" style="display: none;">
 			        <p>jpg.png : 4mo max</p>
 			 </div>
               <div class="choix-img">
 				
-			  <article class="Titre">
-				   <h3>Titre</h3>
-				   <input type="text" id="title" name="title" required>
-			 </article>
-			 <article class="categories">
-				   <h3>Catégorie</h3>
-				   <select method="post" name="category" id="category" required>
-					<option value="">--Choisir catégorie--</option>
-					<option value="1">Objets</option>
-					<option value="2">Appartements</option>
-					<option value="3">Hôtel & restaurants</option>
-				   </select>
-			 </article>
-			</form>
+			       <article class="Titre">
+				       <h3>Titre</h3>
+				       <input type="text" id="title" name="title" required>
+			       </article>
+			       <article class="categories">
+				        <h3>Catégorie</h3>
+				       <select  name="category" id="category" required>
+					       <option value="">--Choisir catégorie--</option>
+					       <option value="1">Objets</option>
+					       <option value="2">Appartements</option>
+					       <option value="3">Hôtel & restaurants</option>
+				       </select>
+			     </article>
+			  </div>
+		 
+		 
 		
-			 <div class="line2"></div>
+			    <div class="line2"></div>
 				<button id="valider" type="submit" >Valider</button>
-              </div>
+			</form>
 			  <i class="fa-solid fa-xmark" id="xmark2" style="color:black"></i>
 			  <i class="fa-solid fa-arrow-left" id="arrow"></i>
 		 </div>
+		 
 
 		 
 		</aside>
