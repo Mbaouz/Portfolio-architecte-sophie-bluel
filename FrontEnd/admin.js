@@ -1,7 +1,7 @@
-import { getWorks , deleteWork , addWork } from "./api.js";
+import { getWorks, deleteWork, addWork } from "./api.js";
 
 const gallery = document.getElementById('gallery');
-const modal = document.getElementById('modal')
+const modal = document.querySelector('.grid')
 const works = await getWorks();
 
 async function updateGallery() {
@@ -27,7 +27,7 @@ async function updateGallery() {
   `
 
     //suprimer photo//
-      document.querySelectorAll(".trash").forEach(element => {
+    document.querySelectorAll(".trash").forEach(element => {
 
       element.addEventListener("click", async (event) => {
 
@@ -43,16 +43,16 @@ await updateGallery()
 
 //boutton modifier//
 
-const btModif = document.getElementById('Bt-Modif') 
-btModif.addEventListener("click" , function(){
+const btModif = document.getElementById('Bt-Modif')
+btModif.addEventListener("click", function () {
 
-document.getElementById("modalWrapper").removeAttribute("style");
+  document.getElementById("modalWrapper").removeAttribute("style");
 
 
 });
 
 const iconM = document.getElementById('icon-modif')
-iconM.addEventListener("click" , function(){
+iconM.addEventListener("click", function () {
 
   document.getElementById("modalWrapper").removeAttribute("style");
 });
@@ -61,18 +61,18 @@ iconM.addEventListener("click" , function(){
 
 //bouton fermer modal//
 const xmark = document.getElementById('xmark')
-xmark.addEventListener("click", function(){
+xmark.addEventListener("click", function () {
 
-  document.getElementById("modalWrapper").setAttribute("style" , "display:none")
+  document.getElementById("modalWrapper").setAttribute("style", "display:none")
 
 });
 
 // click out modal //
 
 const xmodal = document.getElementById('clickOver')
-xmodal.addEventListener("click",function(){
+xmodal.addEventListener("click", function () {
 
-document.getElementById("modalWrapper").setAttribute("style","display:none")
+  document.getElementById("modalWrapper").setAttribute("style", "display:none")
 
 
 });
@@ -80,10 +80,10 @@ document.getElementById("modalWrapper").setAttribute("style","display:none")
 //boutton ajouter //
 
 const btAjout = document.getElementById('btAjout')
-btAjout.addEventListener("click",function(){
+btAjout.addEventListener("click", function () {
 
-document.getElementById("modal2").removeAttribute("style")
-document.getElementById("modalWrapper").setAttribute("style","display:none")
+  document.getElementById("modal2").removeAttribute("style")
+  document.getElementById("modalWrapper").setAttribute("style", "display:none")
 
 
 
@@ -92,27 +92,27 @@ document.getElementById("modalWrapper").setAttribute("style","display:none")
 //fermer modal2 //
 
 const xmark2 = document.getElementById('xmark2')
-xmark2.addEventListener("click", function(){
+xmark2.addEventListener("click", function () {
 
-  document.getElementById("modal2").setAttribute("style","display:none")
+  document.getElementById("modal2").setAttribute("style", "display:none")
 
 
 });
 
 const xmodal2 = document.getElementById('clickOver2')
-xmodal2.addEventListener("click",function(){
+xmodal2.addEventListener("click", function () {
 
-document.getElementById("modal2").setAttribute("style","display:none")
+  document.getElementById("modal2").setAttribute("style", "display:none")
 
 
 });
 
 // fleche retour //
 
-const arrow =document.getElementById('arrow')
-arrow.addEventListener("click",function(){
+const arrow = document.getElementById('arrow')
+arrow.addEventListener("click", function () {
 
-  document.getElementById("modal2").setAttribute("style","display:none")
+  document.getElementById("modal2").setAttribute("style", "display:none")
   document.getElementById("modalWrapper").removeAttribute("style")
 
 
@@ -133,7 +133,7 @@ inputImg.addEventListener("change", function (event) {
   preview.classList.remove('hidden')
   preview.querySelector('img').src = imageUrl;
 
-  
+
 });
 
 
@@ -151,44 +151,43 @@ let title = document.getElementById("title");
 let category = document.getElementById("category")
 myForm.addEventListener("submit", async function (e) {
   e.preventDefault();
-  
+
   if (checkForm()) {
     const formData = new FormData(myForm);
     await addWork(formData);
-    
+
     await updateGallery()
 
     file.value = ''
     title.value = ''
     category.value = ''
-    document.getElementById('valider').style.backgroundColor= ` #CBD6DC `
+    document.getElementById('valider').style.backgroundColor = ` #CBD6DC `
 
     let preview = document.getElementById('preview');
     preview.classList.add('hidden')
-    
-  };
 
-  
+  } else {
+    alert('Merci de remplir tous les champs')
+  }
 });
 
 function checkForm() {
   console.log(file.value);
   console.log(title.value);
   console.log(category.value);
-  
+
   if (file.value != '' && title.value != '' && category.value != '') {
     console.log("ok")
-    
 
-    document.getElementById('valider').style.backgroundColor= `  #1D6154 `
+
+    document.getElementById('valider').style.backgroundColor = `  #1D6154 `
     // Passer le bouton en vert ici
     return true;
 
-    
+
   }
-  
-  document.getElementById('valider').style.backgroundColor= ` #CBD6DC `
-  
+
+  document.getElementById('valider').style.backgroundColor = ` #CBD6DC `
   return false
 }
 
