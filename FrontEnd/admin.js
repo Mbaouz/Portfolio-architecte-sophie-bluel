@@ -149,9 +149,32 @@ let file = document.getElementById("input-file")
 let title = document.getElementById("title");
 
 let category = document.getElementById("category")
+
+// Verification taille fichier input // 
+file.addEventListener('change ',()=>
+
+checkSize()
+);
+function checkSize (){
+  const fileValue = file.value
+const limit = 4000 ;
+const size = fileValue.size/1024 ; 
+if(size>limit) {
+
+  const err = new Error ("Taille maximale 4 Mo");
+  return err ; 
+
+}
+
+
+};
+
+
+
+
 myForm.addEventListener("submit", async function (e) {
   e.preventDefault();
-
+  checkSize();
   if (checkForm()) {
     const formData = new FormData(myForm);
     await addWork(formData);
@@ -164,6 +187,7 @@ myForm.addEventListener("submit", async function (e) {
     document.getElementById('valider').style.backgroundColor = ` #CBD6DC `
 
     let preview = document.getElementById('preview');
+    
     preview.classList.add('hidden')
 
   } else {
@@ -171,22 +195,22 @@ myForm.addEventListener("submit", async function (e) {
   }
 });
 
-function checkForm() {
-  console.log(file.value);
-  console.log(title.value);
-  console.log(category.value);
 
-  if (file.value != '' && title.value != '' && category.value != '') {
-    console.log("ok")
+////////////////////////////////
+function checkForm() {
+  
+
+  if (file.value != '' &&  title.value != '' && category.value != '') {
+   
 
 
     document.getElementById('valider').style.backgroundColor = `  #1D6154 `
-    // Passer le bouton en vert ici
+     
     return true;
 
 
   }
-
+ 
   document.getElementById('valider').style.backgroundColor = ` #CBD6DC `
   return false
 }

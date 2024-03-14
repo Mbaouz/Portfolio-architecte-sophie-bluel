@@ -71,21 +71,23 @@
 				<form method="post">
 					<div class="section-img">
 						<div class="hidden" id="preview">
-							<img src="assets/images/icon-img.png" alt="">
-						</div>
+							<img src=".assets/image/preview" alt="">
+						</div>	
+						
 						<i class="fa-regular fa-image " id="iconImg"></i>
 						<label id="btAjout2" for="input-file" >+ Ajouter photo</label>
 						<input type="file" name="image"  id="input-file" style="display: none;" accept="image/jpg" >
 						<p>jpg.png : 4mo max</p>
+						
 					</div>
 					<div class="choix-img">
 						<article class="Titre">
 							<h3>Titre</h3>
-							<input type="text" id="title" name="title" required>
+							<input type="text" id="title" name="title">
 						</article>
 						<article class="categories">
 							<h3>Catégorie</h3>
-							<select  name="category" id="category" required>
+							<select  name="category" id="category">
 								<option value="">--Choisir catégorie--</option>
 								<option value="1">Objets</option>
 								<option value="2">Appartements</option>

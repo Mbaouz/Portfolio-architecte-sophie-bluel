@@ -16,13 +16,13 @@ formLog.addEventListener("submit", async function (event) {
 
     if (result.token ){
         localStorage.setItem('token', result.token);
-        // Faire redirection ici
+      
         window.location.assign("admin.html");
         
     }else{ alert("Utilisateur ou mot de passe incorrect !")};
 
     
-    // ici faire un message d'erreur, car la combinaison login mot de passe n'est pas bonne (a faire dans un else)
+    
     console.log(result);
 });
 
