@@ -2,7 +2,16 @@ import { getWorks, deleteWork, addWork } from "./api.js";
 
 const gallery = document.getElementById('gallery');
 const modal = document.querySelector('.grid')
-const works = await getWorks();
+const logout = document.getElementById('logout')
+const logged = localStorage.getItem('token')
+
+if (!logged) {
+  window.location.assign("accueil.html");
+}
+logout.addEventListener("click", () => {
+  localStorage.removeItem("token")
+  window.location.assign("accueil.html");
+})
 
 async function updateGallery() {
 
@@ -128,19 +137,16 @@ const inputImg = document.getElementById('input-file');
 
 inputImg.addEventListener("change", function (event) {
   let imageUrl = URL.createObjectURL(event.target.files[0])
-  console.log(imageUrl)
   let preview = document.getElementById('preview');
   preview.classList.remove('hidden')
   preview.querySelector('img').src = imageUrl;
-
-
 });
 
 
 
 
 
-// envoi du formulaire // 
+//  formulaire d'envoi // 
 
 
 const myForm = document.querySelector('form')
@@ -151,66 +157,96 @@ let title = document.getElementById("title");
 let category = document.getElementById("category")
 
 // Verification taille fichier input // 
-file.addEventListener('change ',()=>
-
-checkSize()
+file.addEventListener('change ', () =>
+  checkSize(file)
 );
-function checkSize (){
-  const fileValue = file.value
-const limit = 4000 ;
-const size = fileValue.size/1024 ; 
-if(size>limit) {
+function checkSize(file) {
+  const fileValue = file.files[0]
+  const limit = 4000;
+  const size = fileValue.size / 1024;
+  if (size > limit ) {
+    file.value = ''
+    checkForm()
+    return false
+  }
 
-  const err = new Error ("Taille maximale 4 Mo");
-  return err ; 
+  return true
+};
+// verification format fichier
+function checkExtensions(file) {
+  const fileValue = file.files[0]
+  if (!['image/jpeg', 'image/png'].includes(fileValue.type)) {
+    file.value=''
+    checkForm()
+    return false
+  }
+
+  return true
+}
+
+// Envoi formulaire 
+
+myForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  if (!checkForm()) {
+    alert("Merci de remplir tous les champs!")
+    
+    return
+  }
+
+
+  if (!checkExtensions(file)){
+    alert("Format du fichier inccorect!")
+    resetPreview()
+    return
+  }
+
+  
+  if (!checkSize(file)) {
+    alert("Taille de l'image est limité à 4 Mo maximum ! ")
+   
+    resetPreview();
+    
+    return 
+     
+    
+  }
+
+  
+
+  const formData = new FormData(myForm);
+  await addWork(formData);
+
+  await updateGallery()
+
+  file.value = ''
+  title.value = ''
+  category.value = ''
+  document.getElementById('valider').style.backgroundColor = ` #CBD6DC `
+
+  resetPreview()
+});
+
+function resetPreview() {
+  let preview = document.getElementById('preview');
+  
+  preview.classList.add('hidden') 
+   
 
 }
 
 
-};
-
-
-
-
-myForm.addEventListener("submit", async function (e) {
-  e.preventDefault();
-  checkSize();
-  if (checkForm()) {
-    const formData = new FormData(myForm);
-    await addWork(formData);
-
-    await updateGallery()
-
-    file.value = ''
-    title.value = ''
-    category.value = ''
-    document.getElementById('valider').style.backgroundColor = ` #CBD6DC `
-
-    let preview = document.getElementById('preview');
-    
-    preview.classList.add('hidden')
-
-  } else {
-    alert('Merci de remplir tous les champs')
-  }
-});
-
-
-////////////////////////////////
+// Verification formulaire
 function checkForm() {
-  
-
-  if (file.value != '' &&  title.value != '' && category.value != '') {
-   
 
 
+  if (file.value != '' && title.value != '' && category.value != '' ) {
     document.getElementById('valider').style.backgroundColor = `  #1D6154 `
-     
+
     return true;
-
-
   }
- 
+
   document.getElementById('valider').style.backgroundColor = ` #CBD6DC `
   return false
 }

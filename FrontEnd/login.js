@@ -1,6 +1,11 @@
 
 
-import {login} from "./api.js"
+import { login } from "./api.js"
+const logged = localStorage.getItem('token')
+
+if (logged) {
+    window.location.assign("admin.html");
+}
 
 const formLog = document.getElementById('login-form');
 formLog.addEventListener("submit", async function (event) {
@@ -10,19 +15,19 @@ formLog.addEventListener("submit", async function (event) {
         password: event.target.querySelector("[name=password]").value,
     };
 
-    
-    const result =  await login(UserPassword)
-    
 
-    if (result.token ){
+    const result = await login(UserPassword)
+
+
+    if (result.token) {
         localStorage.setItem('token', result.token);
-      
-        window.location.assign("admin.html");
-        
-    }else{ alert("Utilisateur ou mot de passe incorrect !")};
 
-    
-    
+        window.location.assign("admin.html");
+
+    } else { alert("Utilisateur ou mot de passe incorrect !") };
+
+
+
     console.log(result);
 });
 

@@ -7,7 +7,13 @@ const categories = await getCategories();
 console.log(categories);
 
 const filters = document.getElementById('filters');
+const logged = localStorage.getItem('token')
 
+if (logged) {
+    const login = document.getElementById("login")
+    login.innerText = "admin"
+    login.href = "/admin.html"
+}
 
 // bouttons filtres
 categories.forEach(element => {
@@ -21,36 +27,36 @@ categories.forEach(element => {
 
 const gallery = document.getElementById('gallery');
 
-    
-  works.forEach(element => {
 
-        gallery.innerHTML += `
+works.forEach(element => {
+
+    gallery.innerHTML += `
         <figure> 
         <img src="${element.imageUrl}" alt="${element.title}">
         <figcaption>${element.title}</figcaption>
         </figure>
         `
-    
+
 });
 
 
 // filtre objets
 
 const BtObjets = document.getElementById('Objets');
-BtObjets.addEventListener("click", function(){
+BtObjets.addEventListener("click", function () {
 
-    
-    let ObjetsFilter = works.filter(function(objet){
-        
+
+    let ObjetsFilter = works.filter(function (objet) {
+
         return (objet.categoryId == 1);
-           
-            
-        
+
+
+
     });
 
-    gallery.innerHTML="";
-    ObjetsFilter.forEach(element =>{
-    gallery.innerHTML+= `
+    gallery.innerHTML = "";
+    ObjetsFilter.forEach(element => {
+        gallery.innerHTML += `
     <figure> 
     <img src="${element.imageUrl}" alt="${element.title}">
     <figcaption>${element.title}</figcaption>
@@ -58,29 +64,29 @@ BtObjets.addEventListener("click", function(){
     `
 
 
-   })
-   
-    
-    
+    })
+
+
+
 });
 
 // filtre appartements 
 
 const BtAppart = document.getElementById('Appartements');
-BtAppart.addEventListener("click", function(){
+BtAppart.addEventListener("click", function () {
 
-    
-    let AppartFilter = works.filter(function(App){
-        
+
+    let AppartFilter = works.filter(function (App) {
+
         return App.categoryId == 2;
-           
-            
-        
+
+
+
     });
 
-    gallery.innerHTML="";
-    AppartFilter.forEach(element =>{
-    gallery.innerHTML+= `
+    gallery.innerHTML = "";
+    AppartFilter.forEach(element => {
+        gallery.innerHTML += `
     <figure> 
     <img src="${element.imageUrl}" alt="${element.title}">
     <figcaption>${element.title}</figcaption>
@@ -88,28 +94,28 @@ BtAppart.addEventListener("click", function(){
     `
 
 
-   })
-      
+    })
+
 });
 
 // filtre Hotels & restaurants 
 
 
 const BtHotels = document.getElementById('Hotels & restaurants');
-BtHotels.addEventListener("click", function(){
+BtHotels.addEventListener("click", function () {
 
-    
-    let HotelsFilter = works.filter(function(Hotels){
-        
+
+    let HotelsFilter = works.filter(function (Hotels) {
+
         return Hotels.categoryId == 3;
-           
-            
-        
+
+
+
     });
 
-    gallery.innerHTML="";
-    HotelsFilter.forEach(element =>{
-    gallery.innerHTML+= `
+    gallery.innerHTML = "";
+    HotelsFilter.forEach(element => {
+        gallery.innerHTML += `
     <figure> 
     <img src="${element.imageUrl}" alt="${element.title}">
     <figcaption>${element.title}</figcaption>
@@ -117,18 +123,18 @@ BtHotels.addEventListener("click", function(){
     `
 
 
-   })
-   
-    
-    
+    })
+
+
+
 });
 
 
 // boutton Tout
 
 const BtTout = document.getElementById('Bt-tout')
-BtTout.addEventListener("click",function(){
-    gallery.innerHTML="";
+BtTout.addEventListener("click", function () {
+    gallery.innerHTML = "";
     works.forEach(element => {
 
         gallery.innerHTML += `
@@ -137,8 +143,8 @@ BtTout.addEventListener("click",function(){
         <figcaption>${element.title}</figcaption>
         </figure>
         `
-    
-});
- 
+
+    });
+
 
 });

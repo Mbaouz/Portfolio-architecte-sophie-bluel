@@ -325,6 +325,10 @@ footer nav ul {
 	cursor: pointer;
 }
 
+#logout{
+	cursor: pointer;
+}
+
 /* Page filtres */
 .filtres {
 
