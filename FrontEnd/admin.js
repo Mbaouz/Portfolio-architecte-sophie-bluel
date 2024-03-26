@@ -4,14 +4,46 @@ const gallery = document.getElementById('gallery');
 const modal = document.querySelector('.grid')
 const logout = document.getElementById('logout')
 const logged = localStorage.getItem('token')
+const project = document.getElementById('project')
+
+//Conection 
 
 if (!logged) {
-  window.location.assign("accueil.html");
+  
+  logout.innerText = "login"
+  logout.addEventListener("click", () => {
+    window.location.assign("login.html")
+    
+    
+  })
+  document.getElementById('portfolio-header').removeAttribute('style')
+  document.getElementById('edition').setAttribute("style","display:none")
+  
 }
-logout.addEventListener("click", () => {
-  localStorage.removeItem("token")
-  window.location.assign("accueil.html");
-})
+
+if (logged) {
+  document.getElementById('mode').removeAttribute('style')
+  logout.innerText = "logout"
+  logout.addEventListener("click", () => {
+    localStorage.removeItem("token")
+    window.location.assign("login.html")
+    
+  });
+  
+  document.getElementById('edition').removeAttribute('style')
+
+  project.addEventListener("click", ()=>{
+    localStorage.removeItem("token")
+    document.getElementById('portfolio-header').removeAttribute('style')
+    document.getElementById('edition').setAttribute("style","display:none")
+    logout.innerText = "login"
+
+
+  })
+  
+}
+
+// Recuperation gallery
 
 async function updateGallery() {
 
@@ -257,3 +289,147 @@ function checkForm() {
 file.addEventListener("change", checkForm)
 title.addEventListener("change", checkForm)
 category.addEventListener("change", checkForm)
+
+
+//Filtres
+
+import {getCategories } from "./api.js"
+
+const works = await getWorks();
+
+
+const categories = await getCategories();
+
+
+const filters = document.getElementById('filters');
+
+
+
+
+// bouttons filtres
+categories.forEach(element => {
+    
+    filters.innerHTML += `
+        <div id="${element.name}">
+            <button>${element.name}</button>
+        </div>
+    `
+});
+
+
+
+
+
+
+
+// filtre objets
+
+const BtObjets = document.getElementById('Objets');
+BtObjets.addEventListener("click", function () {
+
+
+    let ObjetsFilter = works.filter(function (objet) {
+
+        return (objet.categoryId == 1);
+
+
+
+    });
+
+    gallery.innerHTML = "";
+    ObjetsFilter.forEach(element => {
+        gallery.innerHTML += `
+    <figure> 
+    <img src="${element.imageUrl}" alt="${element.title}">
+    <figcaption>${element.title}</figcaption>
+    </figure>
+    `
+
+
+    })
+
+
+
+});
+
+// filtre appartements 
+
+const BtAppart = document.getElementById('Appartements');
+BtAppart.addEventListener("click", function () {
+
+
+    let AppartFilter = works.filter(function (App) {
+
+        return App.categoryId == 2;
+
+
+
+    });
+
+    gallery.innerHTML = "";
+    AppartFilter.forEach(element => {
+        gallery.innerHTML += `
+    <figure> 
+    <img src="${element.imageUrl}" alt="${element.title}">
+    <figcaption>${element.title}</figcaption>
+    </figure>
+    `
+
+
+    })
+    
+
+});
+
+// filtre Hotels & restaurants 
+
+
+const BtHotels = document.getElementById('Hotels & restaurants');
+BtHotels.addEventListener("click", function () {
+
+
+    let HotelsFilter = works.filter(function (Hotels) {
+
+        return Hotels.categoryId == 3;
+
+
+
+    });
+
+    gallery.innerHTML = "";
+    HotelsFilter.forEach(element => {
+        gallery.innerHTML += `
+    <figure> 
+    <img src="${element.imageUrl}" alt="${element.title}">
+    <figcaption>${element.title}</figcaption>
+    </figure>
+    `
+
+
+    })
+
+
+
+});
+
+
+// boutton Tout
+
+const BtTout = document.getElementById('Bt-tout')
+BtTout.addEventListener("click", function () {
+    gallery.innerHTML = "";
+    works.forEach(element => {
+
+        gallery.innerHTML += `
+        <figure> 
+        <img src="${element.imageUrl}" alt="${element.title}">
+        <figcaption>${element.title}</figcaption>
+        </figure>
+        `
+
+    });
+
+
+});
+
+

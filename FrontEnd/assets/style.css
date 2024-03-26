@@ -140,6 +140,7 @@ body {
 	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
+	
 }
 
 header {
@@ -304,10 +305,17 @@ footer nav ul {
 }
 
 /* page administrateur */
+
+.portfolio-header2{
+
+display: flex;
+gap:10px;
+justify-content: center;
+
+}
 .Bt-Modif {
 	display: flex;
 	align-items: center;
-	gap: 10px;
 	margin-bottom: 20px;
 }
 
@@ -328,8 +336,21 @@ footer nav ul {
 #logout{
 	cursor: pointer;
 }
+#project {
+
+cursor: pointer;
+
+}
 
 /* Page filtres */
+
+
+.portfolio-header {
+
+flex-direction: column;
+
+
+}
 .filtres {
 
 	display: flex;
@@ -743,3 +764,25 @@ a {
 .hidden {
 	display: none !important;
 }
+
+/*mode edition*/
+
+#mode{
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	background-color: black;
+	height: 50px;
+	max-width: none;
+	width: 1500px;
+	margin: auto;
+	
+
+}
+
+#mode p {
+	color: white;
+}
+

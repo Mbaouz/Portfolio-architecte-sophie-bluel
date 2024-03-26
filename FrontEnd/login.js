@@ -4,7 +4,7 @@ import { login } from "./api.js"
 const logged = localStorage.getItem('token')
 
 if (logged) {
-    window.location.assign("admin.html");
+    window.location.assign("index.html");
 }
 
 const formLog = document.getElementById('login-form');
@@ -22,12 +22,12 @@ formLog.addEventListener("submit", async function (event) {
     if (result.token) {
         localStorage.setItem('token', result.token);
 
-        window.location.assign("admin.html");
+        window.location.assign("index.html");
 
     } else { alert("Utilisateur ou mot de passe incorrect !") };
 
 
 
-    console.log(result);
+    
 });
 
