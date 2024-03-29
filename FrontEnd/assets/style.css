@@ -136,18 +136,23 @@ table {
 
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
-	
+}
+
+main,
+footer,
+header {
+	max-width: 1140px;
+	margin: auto;
 }
 
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px auto
 }
+
 
 section {
 	margin: 50px 0
@@ -306,13 +311,14 @@ footer nav ul {
 
 /* page administrateur */
 
-.portfolio-header2{
+.portfolio-header2 {
 
-display: flex;
-gap:10px;
-justify-content: center;
+	display: flex;
+	gap: 10px;
+	justify-content: center;
 
 }
+
 .Bt-Modif {
 	display: flex;
 	align-items: center;
@@ -333,12 +339,13 @@ justify-content: center;
 	cursor: pointer;
 }
 
-#logout{
+#logout {
 	cursor: pointer;
 }
+
 #project {
 
-cursor: pointer;
+	cursor: pointer;
 
 }
 
@@ -347,10 +354,11 @@ cursor: pointer;
 
 .portfolio-header {
 
-flex-direction: column;
+	flex-direction: column;
 
 
 }
+
 .filtres {
 
 	display: flex;
@@ -381,7 +389,8 @@ flex-direction: column;
 
 }
 
-.filtres button:hover {
+.filtres button:hover,
+.filtres button.active {
 	color: white;
 	background-color: #1D6154;
 }
@@ -510,7 +519,7 @@ a {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	gap: 20px;
-	
+
 }
 
 #clickOver {
@@ -622,7 +631,7 @@ a {
 	height: 100%;
 	width: 100%;
 }
-  
+
 
 #preview img {
 	width: 129px;
@@ -767,7 +776,7 @@ a {
 
 /*mode edition*/
 
-#mode{
+#mode {
 
 	display: flex;
 	justify-content: center;
@@ -775,14 +784,9 @@ a {
 	gap: 10px;
 	background-color: black;
 	height: 50px;
-	max-width: none;
-	width: 1500px;
-	margin: auto;
-	
-
+	width: 100%;
 }
 
 #mode p {
 	color: white;
 }
-

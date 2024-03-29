@@ -9,16 +9,16 @@ const project = document.getElementById('project')
 //Conection 
 
 if (!logged) {
-  
+
   logout.innerText = "login"
   logout.addEventListener("click", () => {
     window.location.assign("login.html")
-    
-    
+
+
   })
   document.getElementById('portfolio-header').removeAttribute('style')
-  document.getElementById('edition').setAttribute("style","display:none")
-  
+  document.getElementById('edition').setAttribute("style", "display:none")
+
 }
 
 if (logged) {
@@ -27,20 +27,20 @@ if (logged) {
   logout.addEventListener("click", () => {
     localStorage.removeItem("token")
     window.location.assign("login.html")
-    
+
   });
-  
+
   document.getElementById('edition').removeAttribute('style')
 
-  project.addEventListener("click", ()=>{
+  project.addEventListener("click", () => {
     localStorage.removeItem("token")
     document.getElementById('portfolio-header').removeAttribute('style')
-    document.getElementById('edition').setAttribute("style","display:none")
+    document.getElementById('edition').setAttribute("style", "display:none")
     logout.innerText = "login"
 
 
   })
-  
+
 }
 
 // Recuperation gallery
@@ -196,7 +196,7 @@ function checkSize(file) {
   const fileValue = file.files[0]
   const limit = 4000;
   const size = fileValue.size / 1024;
-  if (size > limit ) {
+  if (size > limit) {
     file.value = ''
     checkForm()
     return false
@@ -208,7 +208,7 @@ function checkSize(file) {
 function checkExtensions(file) {
   const fileValue = file.files[0]
   if (!['image/jpeg', 'image/png'].includes(fileValue.type)) {
-    file.value=''
+    file.value = ''
     checkForm()
     return false
   }
@@ -223,29 +223,29 @@ myForm.addEventListener("submit", async function (e) {
 
   if (!checkForm()) {
     alert("Merci de remplir tous les champs!")
-    
+
     return
   }
 
 
-  if (!checkExtensions(file)){
+  if (!checkExtensions(file)) {
     alert("Format du fichier inccorect!")
     resetPreview()
     return
   }
 
-  
+
   if (!checkSize(file)) {
     alert("Taille de l'image est limité à 4 Mo maximum ! ")
-   
+
     resetPreview();
-    
-    return 
-     
-    
+
+    return
+
+
   }
 
-  
+
 
   const formData = new FormData(myForm);
   await addWork(formData);
@@ -262,9 +262,9 @@ myForm.addEventListener("submit", async function (e) {
 
 function resetPreview() {
   let preview = document.getElementById('preview');
-  
-  preview.classList.add('hidden') 
-   
+
+  preview.classList.add('hidden')
+
 
 }
 
@@ -273,7 +273,7 @@ function resetPreview() {
 function checkForm() {
 
 
-  if (file.value != '' && title.value != '' && category.value != '' ) {
+  if (file.value != '' && title.value != '' && category.value != '') {
     document.getElementById('valider').style.backgroundColor = `  #1D6154 `
 
     return true;
@@ -293,7 +293,7 @@ category.addEventListener("change", checkForm)
 
 //Filtres
 
-import {getCategories } from "./api.js"
+import { getCategories } from "./api.js"
 
 const works = await getWorks();
 
@@ -308,8 +308,8 @@ const filters = document.getElementById('filters');
 
 // bouttons filtres
 categories.forEach(element => {
-    
-    filters.innerHTML += `
+
+  filters.innerHTML += `
         <div id="${element.name}">
             <button>${element.name}</button>
         </div>
@@ -325,111 +325,63 @@ categories.forEach(element => {
 // filtre objets
 
 const BtObjets = document.getElementById('Objets');
-BtObjets.addEventListener("click", function () {
-
-
-    let ObjetsFilter = works.filter(function (objet) {
-
-        return (objet.categoryId == 1);
-
-
-
-    });
-
-    gallery.innerHTML = "";
-    ObjetsFilter.forEach(element => {
-        gallery.innerHTML += `
-    <figure> 
-    <img src="${element.imageUrl}" alt="${element.title}">
-    <figcaption>${element.title}</figcaption>
-    </figure>
-    `
-
-
-    })
-
-
-
+BtObjets.addEventListener("click", function (e) {
+  resetFilter(e.target);
+  generateGallery(1);
 });
 
 // filtre appartements 
 
 const BtAppart = document.getElementById('Appartements');
-BtAppart.addEventListener("click", function () {
-
-
-    let AppartFilter = works.filter(function (App) {
-
-        return App.categoryId == 2;
-
-
-
-    });
-
-    gallery.innerHTML = "";
-    AppartFilter.forEach(element => {
-        gallery.innerHTML += `
-    <figure> 
-    <img src="${element.imageUrl}" alt="${element.title}">
-    <figcaption>${element.title}</figcaption>
-    </figure>
-    `
-
-
-    })
-    
-
+BtAppart.addEventListener("click", function (e) {
+  resetFilter(e.target);
+  generateGallery(2);
 });
 
 // filtre Hotels & restaurants 
 
 
 const BtHotels = document.getElementById('Hotels & restaurants');
-BtHotels.addEventListener("click", function () {
-
-
-    let HotelsFilter = works.filter(function (Hotels) {
-
-        return Hotels.categoryId == 3;
-
-
-
-    });
-
-    gallery.innerHTML = "";
-    HotelsFilter.forEach(element => {
-        gallery.innerHTML += `
-    <figure> 
-    <img src="${element.imageUrl}" alt="${element.title}">
-    <figcaption>${element.title}</figcaption>
-    </figure>
-    `
-
-
-    })
-
-
-
+BtHotels.addEventListener("click", function (e) {
+  resetFilter(e.target);
+  generateGallery(3);
 });
 
 
 // boutton Tout
 
 const BtTout = document.getElementById('Bt-tout')
-BtTout.addEventListener("click", function () {
-    gallery.innerHTML = "";
-    works.forEach(element => {
-
-        gallery.innerHTML += `
-        <figure> 
-        <img src="${element.imageUrl}" alt="${element.title}">
-        <figcaption>${element.title}</figcaption>
-        </figure>
-        `
-
-    });
-
-
+BtTout.addEventListener("click", function (e) {
+  resetFilter(e.target);
+  generateGallery(false);
 });
 
+function generateGallery(categoryId) {
+  let filteredList;
+  if (categoryId) {
+    filteredList = works.filter(function (objet) {
+      return (objet.categoryId == categoryId);
+    });
+  } else {
+    filteredList = works;
+  }
 
+  gallery.innerHTML = "";
+  filteredList.forEach(element => {
+
+    gallery.innerHTML += `
+        <figure> 
+          <img src="${element.imageUrl}" alt="${element.title}">
+          <figcaption>${element.title}</figcaption>
+        </figure>
+        `
+  });
+}
+
+function resetFilter(target) {
+  BtAppart.querySelector('button').classList.remove("active");
+  BtHotels.querySelector('button').classList.remove("active");
+  BtObjets.querySelector('button').classList.remove("active");
+  BtTout.querySelector('button').classList.remove("active");
+  target.classList.add("active");
+}
